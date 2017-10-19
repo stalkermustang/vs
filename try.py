@@ -31,4 +31,14 @@ def gradient_method(f, x0, n_steps=1000, learning_rate=1e-2, eps=1e-8):
         x0-= learning_rate*my_grad
     return (f(x0), x0)
 
+def linear_regression_mse_gradient1(w, b, X, y_true):
+    """
+        input: w, b - weights and bias of a linear regression model,
+                X - object-feature matrix, y_true - targets.
+        returns gradient of linear regression model mean squared error w.r.t (with respect to) w and b
+    """
+    val = np.append(w, b)
+    X = np.hstack((X, np.ones((X.shape[0],1))))
+    return 2./len(X)*(X.T.dot(X.dot(val)-y_true))
+
 print(gradient_method(my_f, np.array([10,15])))
