@@ -26,7 +26,7 @@ def gradient_method(f, x0, n_steps=1000, learning_rate=1e-2, eps=1e-8):
         For gradient use finite difference approximation with eps step.
     """
     x0 = np.array(x0, dtype=float)
-    for i in range(n_steps):
+    for _ in range(n_steps):
         my_grad = gradient_approx(f, x0, eps=eps)
         x0-= learning_rate*my_grad
     return (f(x0), x0)
